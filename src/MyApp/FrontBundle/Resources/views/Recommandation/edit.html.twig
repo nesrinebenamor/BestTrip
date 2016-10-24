@@ -1,0 +1,19 @@
+{% extends 'MyApp\UserBundle::layout.html.twig' %}
+{% block body -%}
+     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+    <h1>Modifier la recommandation</h1>
+
+    {{ form(edit_form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('recommandation') }}">
+           Retour à la liste de toutes les recommandations
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+ {% else %}
+        <meta http-equiv="refresh" content="0; url=http://localhost/ProjetBestTrip/web/app_dev.php/login" />
+{% endif %}
+{% endblock %}

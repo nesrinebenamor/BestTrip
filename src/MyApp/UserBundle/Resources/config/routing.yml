@@ -1,0 +1,95 @@
+utilisateur:
+    path:     /admin/index
+    defaults: { _controller: "MyAppUserBundle:Utilisateur:index" }
+    
+utilisateur_show:
+    path:     /{id}/show
+    defaults: { _controller: "MyAppUserBundle:Profile:show" }
+    
+utilisateur_show_admin:
+    path:     /admin/{id}/show
+    defaults: { _controller: "MyAppUserBundle:Utilisateur:show" }    
+
+utilisateur_new:
+    path:     /new
+    defaults: { _controller: "MyAppUserBundle:Utilisateur:new" }
+
+utilisateur_create:
+    path:     /create
+    defaults: { _controller: "MyAppUserBundle:Utilisateur:create" }
+    requirements: { _method: post }
+    
+utilisateur_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "FOSUserBundle:Profile:edit" }
+    requirements: { _method: post }    
+         
+utilisateur_update_admin:
+    path:     /admin/{id}/edite
+    defaults: { _controller: "MyAppUserBundle:Utilisateur:edite" }
+    
+utilisateur_update_admin1:
+    path:     /admin/{id}/update
+    defaults: { _controller: "MyAppUserBundle:Utilisateur:Modifier" }    
+   
+utilisateur_delete_admin:
+    path:     /admin/{id}/delete
+    defaults: { _controller: "MyAppUserBundle:Utilisateur:delete" }
+    
+utilisateur_delete_admin1:
+    path:     /admin/{id}/supprimer
+    defaults: { _controller: "MyAppUserBundle:Utilisateur:Supprimer" }    
+
+MyApp_user_contact:
+    pattern:  /contacteznous
+    defaults: { _controller: MyAppUserBundle:Page:contact }
+    requirements:
+        _method:  GET|POST  
+        
+MyApp_user_accueil:
+    pattern:  /accueil
+    defaults: { _controller: MyAppUserBundle:Page:accueil }        
+  
+home_admin:
+    pattern:  /accueiladmin
+    defaults: { _controller: MyAppUserBundle:Page:accueilAdmin }       
+        
+MyAppUserBundle_profile:
+    path: /test
+    defaults: { _controller: MyAppUserBundle:Profile:preferences } 
+    
+myapp_user_profile_edit:
+    pattern:  /edit
+    defaults: { _controller: MyAppUserBundle:Profile:edit }
+
+myapp_user_profile_show:
+    pattern:  /show
+    defaults: { _controller: MyAppUserBundle:Profile:show }    
+    requirements:
+        _method:  GET
+        
+myapp_utilisateur_rechercher:
+  pattern: /admin/rechercher
+  defaults: { _controller: MyAppUserBundle:Utilisateur:rechercherUtilisateur }
+    
+hwi_oauth_redirect:
+    resource: "@HWIOAuthBundle/Resources/config/routing/redirect.xml"
+    prefix:   /secure_area/login
+    
+hwi_oauth_login:
+    resource: "@HWIOAuthBundle/Resources/config/routing/login.xml"
+    prefix: /secure_area/login
+    
+hwi_oauth_connect:
+    resource: "@HWIOAuthBundle/Resources/config/routing/connect.xml"
+    prefix: /secure_area/login    
+       
+redirect_path:
+    pattern: /redirect
+    defaults: { _controller: MyAppUserBundle:Redirect:redirect }
+    
+connect_facebook:
+    pattern: /connectFB
+    defaults: { _controller: MyAppUserBundle:Facebook:loginFB }    
+    
+       

@@ -1,0 +1,62 @@
+{% extends 'MyApp\UserBundle::layoutBack.html.twig' %}
+{% block body -%}
+    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+    <h1>Les détails de la recommandation</h1>
+     {% if entity.estcompagnie is null %}
+         <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Adresse Du lieu</th>
+                <td>{{ entity.adresse }}</td>
+            </tr>
+            <tr>
+                <th>Contenu de la recommandation</th>
+                <td>{{ entity.contenu }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('recommandation') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+         {% else %}
+             
+             <table class="record_properties">
+        <tbody>
+             <tr>
+                <th>Nom de la compagnie</th>
+                <td>{{ entity.nom }}</td>
+            </tr>
+            <tr>
+                <th>Contenu de la recommandation</th>
+                <td>{{ entity.contenu }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('recommandation') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('recommandation_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{{form_rest(delete_form)}}
+         {% endif %}
+{% else %}
+        <meta http-equiv="refresh" content="0; url=http://localhost/ProjetBestTrip/web/app_dev.php/login" />
+{% endif %}
+{% endblock %}

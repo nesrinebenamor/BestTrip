@@ -1,0 +1,57 @@
+{% extends "MyAppFrontBundle::layout.html.twig" %}
+
+
+{% block content %}
+    
+    <h1>Experiences</h1>
+
+    {%for i in experience %}
+     
+        <br><br><br>
+        <div id="experience"  class="expression  story-expression  is-link">
+            <div href="{{path('detail_experience',{'id':i.id})}}" class="expression-content" onclick="self.location.href=('{{path('detail_experience',{'id':i.id})}}')">
+                <div class="title">{{i.titre}}</div> 
+                <div class="content"> {{i.contenu}}
+                    <div> Date : {{i.date|date('Y-m-d')}}</div>
+                    <div> Date Fin : {{i.datefin|date('Y-m-d')}}</div>
+                    <div> Dépense : {{i.depense}}</div>
+
+                </div>
+                <div class="foot">
+                    <span class="member"></span>
+                </div>
+            </div>
+
+            <div class="interactions ep-button-bar ">
+                <form id="like-story-5659210-button-form" class="like-button-form like-story-form" action="" method="post" enctype="">
+                    <input id="" name="_csrf" value="20374722a725921e04da0e3dea8dea66" type="hidden">
+                    <span class="ep-form-status-msg "></span>
+                    <div class="form-content">
+                        <input name="modelType" value="Story" type="hidden">
+                        <input name="modelId" value="5659210" type="hidden">
+                        <input class="action" name="action" value="like" type="hidden">
+                        <button class="icon-btn" title="Heart">
+                        </button>
+                    </div>
+                    <div class="form-actions">
+                    </div>
+                </form>
+                <form id="respond-form-Story-5659210" class="respond-form indicate-loading " action="{{path('commenter_experiences',{'id':i.id})}}" method="post" enctype="">
+                    <input type="hidden" id="" name="_csrf" value="20374722a725921e04da0e3dea8dea66" />
+                    <h3 class="respond-form-title">Commentaire</h3>
+                    <span class="ep-form-status-msg "></span>
+                    <div class="form-content">
+                        <textarea id="respond-form-Story-5659210-textarea" name="com" placeholder="Votre Commentaire"></textarea>
+                        <button type="submit" onclick="{{path('commenter_experiences',{'id':i.id})}}">commenter</button>
+                        <a href="{{asset('facebook-php-sdk-master/src/envoyer.php')}}" action="">Partager</a>
+                    </div>
+                </form>
+            </div>
+                 
+        </div> 
+                    {{ social_link('facebook', 'http://www.astina.ch', {'text': 'zrmglkarejhymrkzjymjzy(', attributes: {'class': 'custom-share', 'target': '_self'} }, 'Custom link text') }}
+    {% endfor %}
+     
+{% endblock %}
+
+

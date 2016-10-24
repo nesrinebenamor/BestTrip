@@ -1,0 +1,26 @@
+{% extends "MyAppFrontBundle::layoutBack.html.twig" %}
+{% block content %}
+<h1>La Liste Des Newsletter </h1>
+<form method="POST"  action="">
+    Tapez le nom du Newsletter : <input type="text" name="search"/>
+    <input type="submit" value="chercher"/>
+</form>
+<table border="1">
+    <tr>
+        <th>Id</th>
+        <th>NOM</th>
+         <th>Contenu</th>
+          <th>Date</th>
+    </tr>
+    
+    {% for i in newsletter %}
+    <tr>
+        <td>{{i.id}}</td>
+        <td>{{i.nom}}</td>
+        <td>{{i.contenu}}</td>
+        <td>{{i.date|date('Y-m-d')}}</td>
+       
+          </tr>
+    {% endfor %}
+    {% endblock %}
+{# empty Twig template #}

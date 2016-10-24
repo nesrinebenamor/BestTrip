@@ -1,0 +1,10 @@
+{%for i in entities %}
+    
+    {{i.nom }}
+    {{i.resume }}
+    {{i.prix }}
+    
+    {% if i.date %} {{i.date|date('Y-m-d H:i:s') }} {%endif %}
+    
+    
+    {%endfor %}

@@ -1,0 +1,18 @@
+{% extends 'MyApp\UserBundle::layout.html.twig' %}
+{% block contenu %}
+
+{% block body -%}
+    <h2 class="indent-left margin-bot">Utilisateur creation</h2>
+
+    {{ form(form) }}
+  
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('utilisateur') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+{% endblock %}
+{% endblock %}

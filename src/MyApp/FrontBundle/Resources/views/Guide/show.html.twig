@@ -1,0 +1,68 @@
+{% extends "MyAppFrontBundle::layout.html.twig" %}
+{% block content %}
+    <style type="text/css">
+.forum{
+    width:60%;
+    padding: .8em 0.5em;
+    margin: .5em 0 1em 0;
+    color: #000;
+    font-size: 15px;
+    outline: none;
+    box-shadow: 1px 1px rgb(219, 219, 214);
+    background: rgb(233, 237, 252);
+    border-radius: 9px;
+    border: none;
+    font-family: 'Lato', sans-serif;
+}
+</style>
+    <h1>Guide</h1>
+
+    
+      
+    <ul>
+         
+        
+                    <div class="forum"  >  
+              <li>  Nom :
+                {{ entity.nom }}
+                </li>
+            </div>
+                <div class="forum"  > 
+               <li> Resume :
+                {{ entity.resume }}
+                </li>
+                </div>
+                    
+                    
+            <div class="forum"  > 
+               <li> Prix :
+                {{ entity.prix }}
+                </li>
+                </div>
+            <div class="forum"  > 
+                <li>Date :
+                {{ entity.date|date('Y-m-d H:i:s') }}
+                </li>
+                </div>
+    </ul>  
+     </div>
+
+     <table>
+         <tr>
+             <td>
+        
+            <button class="btn btn-block btn-primary"   href="{{ path('Guide') }}" onclick="self.location.href=('{{ path('Guide') }}')" style="width: 300px;">Retour a la Liste</button>
+             </td>
+             <td>
+        
+            <button class="btn btn-block btn-primary"   href="{{ path('Guide_edit', { 'id': entity.id }) }}" onclick="self.location.href=('{{ path('Guide_edit', { 'id': entity.id }) }}')" style="width: 300px;">Modifier</button>
+             </td>
+     </tr>
+            
+    
+
+     </table>
+            {{ form(delete_form) }}
+<button class="btn btn-block btn-primary"   href="{{ path('my_app_front_pdf', { 'id': entity.id })}}" onclick="self.location.href=('{{ path('my_app_front_pdf', { 'id': entity.id })}}')" style="width: 300px;">PDF</button>
+    <div>{{socialButtons()}}</div>
+{% endblock %}

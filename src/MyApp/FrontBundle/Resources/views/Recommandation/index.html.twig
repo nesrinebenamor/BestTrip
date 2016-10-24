@@ -1,0 +1,50 @@
+{% extends 'MyApp\UserBundle::layoutBack.html.twig' %}
+{% block a2 %}
+    active
+{% endblock %}   
+{% block body -%}
+     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+        <div class="box" >
+            <div class="box-header" >
+                 <h3>La liste des recommandations</h3>
+            </div>
+            <div class="box-body">
+       <table id="example1_wrapper" class="table table-bordered table-striped"> 
+        <thead>
+            <tr>
+                <th>Contenu de la recommandation</th>
+                <th>Nom de la compagnie</th>
+                <th>Adresse du lieu</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td>{{ entity.contenu }}</td>
+                <td>{{ entity.nom }}</td>
+                <td>{{ entity.adresse }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('recommandation_show', { 'id': entity.id }) }}">Voir de prés</a>
+                    </li>
+                     <li>
+                        <a href="{{ path('supprimer_recommandation', { 'id': entity.id }) }}">Supprimer</a>
+                    </li>
+                     <li>
+                        <a href="{{path("chart_compagnie")}}">Consulter les statistiques des recommandations compagnies</a>
+                    </li>
+                    <li>
+                        <a href="{{path("chart_lieu")}}">Consulter les statistiques des recommandations lieux</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+            </div>
+     </div>
+   {% endif %}
+    {% endblock %}

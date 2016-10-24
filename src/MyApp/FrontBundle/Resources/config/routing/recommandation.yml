@@ -1,0 +1,30 @@
+recommandation:
+    path:     /
+    defaults: { _controller: "MyAppFrontBundle:Recommandation:index" }
+
+recommandation_show:
+    path:     /{id}/show
+    defaults: { _controller: "MyAppFrontBundle:Recommandation:show" }
+
+recommandation_new:
+    path:     /new
+    defaults: { _controller: "MyAppFrontBundle:Recommandation:new" }
+
+recommandation_create:
+    path:     /create
+    defaults: { _controller: "MyAppFrontBundle:Recommandation:create" }
+    methods:  POST
+
+recommandation_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "MyAppFrontBundle:Recommandation:edit" }
+
+recommandation_update:
+    path:     /{id}/update
+    defaults: { _controller: "MyAppFrontBundle:Recommandation:update" }
+    methods:  [POST, PUT]
+
+recommandation_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "MyAppFrontBundle:Recommandation:delete" }
+    methods:  [POST, DELETE]

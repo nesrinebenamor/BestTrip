@@ -1,0 +1,4 @@
+
+parameters:
+    # MyApp contact email address
+    myapp_user.emails.contact_email: besttrippidev@gmail.com

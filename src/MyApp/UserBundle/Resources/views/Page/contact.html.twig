@@ -1,0 +1,46 @@
+{% extends "MyAppUserBundle::layoutC.html.twig" %}
+{% block contact %}
+
+{% block body %}
+      {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+    <header>
+        <center><h1>Contactez Nous</h1><center>
+    </header>
+    
+ {% for flashMessage in app.session.flashbag.get('blogger-notice') %}
+         <div class="blogger-notice">
+  {{ flashMessage }}
+  </div>
+{% endfor %}
+
+    <form action="{{ path('MyApp_user_contact') }}" method="post" {{ form_enctype(form) }} class="fos_user_registration_register">
+        {{ form_errors(form) }}
+        
+    <div class="input-group-addon">
+     <span class="input-group" ><i class="fa fa-user" ></i></span>
+   {{ form_row(form.name , {'attr':{'class': 'form-control','placeholder':'Nom'}}) }}
+    </div>
+    <br>
+    <div class="input-group-addon">
+     <span class="input-group" ><i class="fa fa-mail-forward" ></i></span>
+   {{ form_row(form.email , {'attr':{'class': 'form-control','placeholder':'Adresse Email'}}) }}
+    </div>
+     <br>
+    <div class="input-group-addon">
+     <span class="input-group" ><i class="fa fa-envelope" ></i></span>
+   {{ form_row(form.subject , {'attr':{'class': 'form-control','placeholder':'Subject'}}) }}
+    </div>
+     <br>
+    <div class="input-group-addon">
+     <span class="input-group" ><i class="fa fa-book" ></i></span>
+   {{ form_row(form.body , {'attr':{'class': 'form-control','placeholder':'Body'}}) }}
+    </div>
+     <br>
+        <input type="submit" value="Submit" class="btn btn-block btn-success "/>
+         {{ form_rest(form) }}
+    </form>
+           {% else %}
+        <meta http-equiv="refresh" content="0; url=http://localhost/ProjetBestTrip/web/app_dev.php/login" />
+    {% endif %}
+{% endblock %}
+{% endblock %} 

@@ -1,0 +1,31 @@
+{% trans_default_domain 'MyAppUserBundle' %}
+{% block subject %}
+{% autoescape false %}
+{{ 'registration Email confirm'|trans({'%username%': user.username, '%confirmationUrl%': confirmationUrl}) }}
+{% endautoescape %}
+{% endblock %}
+{% block body_text %}
+    Welcome to Our Site Best Trip , {{ user.username }}!                                                
+
+To confirm your email, please follow this link:                                                                    
+{{ confirmationUrl }}
+
+You will be able to log-in using the username or email you given:                                        
+
+Username : {{ user.username }}                                                                                                         
+Email    : {{ user.email }}                                                                                                 
+
+If you received this e-mail in error just ignore this message. No further actions are required from you.                  
+
+
+
+                                                     *****                                                           
+
+                                                 See you soon!
+    {% endblock %}
+{% autoescape false %}
+{% endautoescape %}
+
+Best Trip Admin
+{% block body_html %}{% endblock %}
+

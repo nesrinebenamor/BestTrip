@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="free-educational-responsive-web-template-webEdu">
+        <meta name="author" content="webThemez.com">
+        <title>Best Trip</title>
+        <link rel="favicon" href="{{asset('assets/images/favicon.png')}}">
+        <link rel="stylesheet" media="screen" href="{{asset('http://fonts.googleapis.com/css?family=Open+Sans:300,400,700')}}">
+        <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
+        <link rel="stylesheet" href="{{asset('assets/css/font-awesome.min.css')}}">
+        <!-- -->
+         <link rel="stylesheet" href={{asset("assets/css/bootstrap-theme.css")}} media="screen"> 
+        <link rel="stylesheet" href={{asset("assets/css/style.css")}}>
+        <link rel='stylesheet' id='camera-css'  href={{asset('assets/css/camera.css')}} type='text/css' media='all'> 
+        <script src={{asset("js/jquery-1.9.1.min.js")}}></script> 
+      <script src={{asset("js/jquery.easydropdown.js")}}></script> 
+      <script src={{asset("js/jquery.magnific-popup.js")}}></script>
+      <link rel="stylesheet" href={{asset("css/jquery-ui.css")}} />
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+        <script src="assets/js/html5shiv.js"></script>
+        <script src="assets/js/respond.min.js"></script>
+        <![endif]-->
+<link rel="stylesheet" href="{{ asset('bundles/myappfilmotheque/css/main.css') }}" type="text/css" media="all" />
+<!--<img src="{{ asset('bundles/myappfilmotheque/images/logo.png') }}" alt="Filmothèque" width="128" height="128" />-->
+
+      <!--  -->
+        <!-- Custom styles-->
+        <link rel="stylesheet" href="{{asset('assets/css/bootstrap-theme.css')}}" media="screen">
+        <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
+	<script src="{{asset('http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js')}}" type="text/javascript"></script> 
+   
+ 
+    </head>
+    <body>
+        <!-- Fixed navbar -->
+        <div class="navbar navbar-inverse">
+            <div class="container">
+                <div class="navbar-header">
+                    <!-- Button for smallest screens -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+                    <a class="navbar-brand" href="{{asset('index.html')}}">
+                        <img src="{{asset('assets/images/logo.png')}}" alt="Techro HTML5 template" style="
+                             width: 250px;
+                             margin-left: -100px;
+                             "></a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav pull-right mainNav">
+                        <li class="c1"><a href="{{path('acceul_front')}}">Accueil</a></li>
+                        <li class="c2 dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Expérience <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{path('experience_create')}}">Partager Expérience</a></li>
+                                <li><a href="{{path('experience_show')}}">Afficher Expériences</a></li>
+                            </ul>
+                        </li>
+                        <li class="c3 dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Guide <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{path('Guide_create')}}">Creer Guide</a></li>
+                                <li><a href="{{path('Guide')}}">Afficher Les Guides</a></li>
+
+                           </ul>
+                        </li>
+                        <li class="c4 dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Recommandation <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{path('recommandation_create')}}">Proposer Recommandation</a></li>
+                                <li><a  href="{{path('affichage')}}">Afficher Recommandations</a></li>
+
+                            </ul>
+                        </li>
+                        
+                        
+                        <li class="c2"><a href="{{ path('MyApp_user_contact')}}">Contact</a></li>
+                        <li class="c5"><a href="{{ path('liste_sujets')}}">Forum</a></li>
+                        
+                        <li class="c6">                            
+                              <ul class="nav navbar-nav pull-right mainNav" >
+                             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                           
+                           <li><a href="#" class="dropdown-toggle" data-toggle="dropdown">{{app.user.username}} <span class="caret"></span></a>
+                               <ul class="dropdown-menu" role="menu">
+                                <li><a href="{{path('myapp_user_profile_show')}}">Consulter Profile</a></li>   
+                                <li><a href="{{path('myapp_user_profile_edit')}}">Editer Profile</a></li>
+                                <li><a href="{{path('my_experiences',{'id':app.user.id})}}">Mes Expériences</a></li>
+                                <li><a href="{{path('fos_user_change_password')}}">Changer Mot de passe</a></li>
+                                <li><a href="{{path('fos_user_security_logout')}}">Déconnexion</a></li>
+                                
+                               </ul>
+                            <li><img src="{{app.request.basepath}}/uploads/photos/{{app.user.image}}" alt="monimg2" width="100" height="100"/></li>   
+                            {% else %}
+                            <ul class="nav navbar-nav pull-left mainNav">
+                             <li><a href="{{path('fos_user_security_login')}}">Connexion</a></li>
+                             <li><a href="{{path('fos_user_registration_register')}}">Inscription</a></li>
+                            </ul> 
+                            {% endif %}
+                             </ul>
+                        </li>
+                    </ul>
+                </div>
+                    
+                <!--/.nav-collapse -->
+                
+                
+            </div>
+        </div>
+        <!-- /.navbar -->
+
+        <!-- Header -->
+        <header id="head">
+            <div class="container">
+                <div class="heading-text">							
+                    <h1 class="animated flipInY delay1">Rejoindre Notre Site</h1> <br/>
+                    <p>Les meuileurs Destination et Expériences</p>
+                </div>
+
+                <div class="fluid_container">                       
+                    <div class="camera_wrap camera_emboss pattern_1" id="camera_wrap_4" style="display: block; margin-bottom: 61px; height: 600px; margin-top: 44px;">
+                        <div data-thumb={{asset("assets/images/slides/thumbs/img1.jpg")}} data-src={{asset("assets/images/slides/img1.jpg")}}>                       
+                        </div> 
+                        <div data-thumb={{asset("assets/images/slides/thumbs/img2.jpg")}} data-src={{asset("assets/images/slides/img2.jpg")}}>
+                        </div>
+                        <div data-thumb={{asset("assets/images/slides/thumbs/img3.jpg")}} data-src={{asset("assets/images/slides/img3.jpg")}}>
+                        </div> 
+                        <div data-thumb={{asset("assets/images/slides/thumbs/img4.jpg")}} data-src={{asset("assets/images/slides/img4.jpg")}}>
+                        </div> 
+                        <div data-thumb={{asset("assets/images/slides/thumbs/img5.jpg")}} data-src={{asset("assets/images/slides/img5.jpg")}}>
+                        </div> 
+                        <div data-thumb={{asset("assets/images/slides/thumbs/img6.jpg")}} data-src={{asset("assets/images/slides/img6.jpg")}}>
+                        </div> 
+                        <div data-thumb={{asset("assets/images/slides/thumbs/img7.jpg")}} data-src={{asset("assets/images/slides/img7.jpg")}}>
+                        </div> 
+                        <div data-thumb={{asset("assets/images/slides/thumbs/img8.jpg")}} data-src={{asset("assets/images/slides/img8.jpg")}}>
+                        </div> 
+                    </div><!-- #camera_wrap_3 -->
+                </div><!-- .fluid_container -->
+            </div>
+        </header>
+            
+{% block contact %}
+                    {% endblock %}
+    
+         <div class="container">
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+                <a href="{{ path('fos_user_security_logout') }}">
+                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                </a>
+            {% else %}
+                <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+            {% endif %}
+        </div>
+        <div class="container">
+         {% for type, messages in app.session.flashbag.all() %}
+            {% for message in messages %}
+                <div class="flash-{{ type }} alert alert-success ">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+        </div>
+
+        {% block sidebar %}
+        {% endblock %}
+
+        <!-- container -->
+        <section class="container">
+
+            <div class="row">
+                <br> <br>
+                 <div class="container">  
+                      {% block body -%}
+                         {% endblock %}
+                     
+                     {% block bodyshow -%}
+                         {% endblock %}
+                     {% block contentuser %}
+                         {% endblock %}
+                {%block contenu %}	
+                {% endblock %}
+                
+                </div>
+                <div class="container">    
+            {% block fos_user_content %}
+            {% endblock fos_user_content %}
+                <!-- Article main content -->
+                </div>
+
+            </div>
+        </section>
+                <br><br>
+                  <div>{{ socialButtons() }}</div>
+        <!-- /container -->
+        <footer id="footer">
+
+            <div class="container">
+                <div class="row">
+                    <div class="footerbottom">
+                        <div class="col-md-3 col-sm-6">
+                            <div class="footerwidget">
+                                <h4>
+                                    Course Categories
+                                </h4>
+                                <div class="menu-course">
+                                    <ul class="menu">
+                                        <li><a href="#">
+                                                List of Technology 
+                                            </a>
+                                        </li>
+                                        <li><a href="#">
+                                                List of Business
+                                            </a>
+                                        </li>
+                                        <li><a href="#">
+                                                List of Photography
+                                            </a>
+                                        </li>
+                                        <li><a href="#">
+                                                List of Language
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            
+                            <div class="footerwidget">
+                                <h4>
+                                    Products Categories
+                                </h4>
+                                <div class="menu-course">
+                                    <ul class="menu">
+                                        <li> <a href="#">
+                                                Individual Plans  </a>
+                                        </li>
+                                        <li><a href="#">
+                                                Business Plans
+                                            </a>
+                                        </li>
+                                        <li><a href="#">
+                                                Free Trial
+                                            </a>
+                                        </li>
+                                        <li><a href="#">
+                                                Academic
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="footerwidget">
+                                <h4>
+                                    Browse by Categories
+                                </h4>
+                                <div class="menu-course">
+                                    <ul class="menu">
+                                        <li><a href="#">
+                                                All Courses
+                                            </a>
+                                        </li>
+                                        <li> <a href="#">
+                                                All Instructors
+                                            </a>
+                                        </li>
+                                        <li><a href="#">
+                                                All Members
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                All Groups
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6"> 
+                            <div class="footerwidget"> 
+                                <h4>Contact</h4> 
+                                <p>Lorem reksi this dummy text unde omnis iste natus error sit volupum</p>
+                                <div class="contact-info"> 
+                                    <i class="fa fa-map-marker"></i> Kerniles 416  - United Kingdom<br>
+                                    <i class="fa fa-phone"></i>+00 123 156 711 <br>
+                                    <i class="fa fa-envelope-o"></i> youremail@email.com
+                                </div> 
+                            </div><!-- end widget --> 
+                        </div>
+                    </div>
+                </div>
+                <div class="social text-center">
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                    <a href="#"><i class="fa fa-facebook"></i></a>
+                    <a href="#"><i class="fa fa-dribbble"></i></a>
+                    <a href="#"><i class="fa fa-flickr"></i></a>
+                    <a href="#"><i class="fa fa-github"></i></a>
+                </div>
+
+                <div class="clear"></div>
+                <!--CLEAR FLOATS-->
+            </div>
+            <div class="footer2">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-md-6 panel">
+                            <div class="panel-body">
+                                <p class="simplenav">
+                                    <a href="{{asset('index.html')}}">Home</a> | 
+								<a href="{{asset('about.html')}}">About</a> |
+								<a href="{{asset('courses.html')}}">Courses</a> |
+								<a href="{{asset('price.html')}}">Price</a> |
+								<a href="{{asset('videos.html')}}">Videos</a> |
+								<a href="{{asset('contact.html')}}">Contact</a>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 panel">
+                            <div class="panel-body">
+                                <p class="text-right">
+                                    Copyright &copy; 2014. Template by <a href="{{asset('http://webthemez.com/')}}" rel="develop">WebThemez.com</a>
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- /row of panels -->
+                </div>
+            </div>
+        </footer>
+
+
+        <!-- JavaScript libs are placed at the end of the document so the pages load faster -->
+         <script src="{{asset('assets/js/custom.js')}}"></script>
+          <script src="{{asset('http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js')}}"></script>
+        <script src="{{asset('http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js')}}"></script>
+        <!-- JavaScript libs are placed at the end of the document so the pages load faster -->
+        <script src={{asset("assets/js/modernizr-latest.js")}}></script> 
+        <script type='text/javascript' src={{asset('assets/js/jquery.min.js')}}></script>
+        <script type='text/javascript' src={{asset('assets/js/fancybox/jquery.fancybox.pack.js')}}></script>
+
+        <script type='text/javascript' src={{asset('assets/js/jquery.mobile.customized.min.js')}}></script>
+        <script type='text/javascript' src={{asset('assets/js/jquery.easing.1.3.js')}}></script> 
+        <script type='text/javascript' src={{asset('assets/js/camera.min.js')}}></script> 
+ 
+        <script>
+            jQuery(function () {
+
+                jQuery('#camera_wrap_4').camera({
+                    transPeriod: 500,
+                    time: 3000,
+                    height: '600',
+                    loader: 'false',
+                    pagination: true,
+                    thumbnails: false,
+                    hover: false,
+                    playPause: false,
+                    navigation: false,
+                    opacityOnGrid: false,
+                    imagePath: 'assets/images/'
+                });
+
+            });
+
+        </script>
+       
+        
+        <div>
+            
+        </div>
+        
+    </body>
+</html>

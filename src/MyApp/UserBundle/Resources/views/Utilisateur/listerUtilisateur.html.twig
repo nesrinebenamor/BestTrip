@@ -1,0 +1,34 @@
+{% extends 'MyAppUserBundle::layout.html.twig' %} 
+{% block contentuser %}
+
+<form id="form_recherche" action="{{ path('myapp_utilisateur_rechercher') }}" method="POST">
+    {{ form_widget(form) }}
+    <input type="submit" value="Rechercher" id="utilisateurrecherche_motcle" />
+</form>
+<div class="loading"></div>
+<div id="resultats_recherche"> 
+{% include 'MyAppUserBundle:Utilisateur:listUtilisateur.html.twig' with {'utilisateurs' : utilisateurs}  %}
+</div>
+
+<p><a href="{{ path('utilisateur_create') }}">Ajouter un utilisateur</a><p>
+
+<script>
+$(".loading").hide();
+$("#form_recherche").submit(function(){ 
+    $(".loading").show();
+    var motcle = $("#utilisateurrecherche_motcle").val();
+    var DATA = 'motcle=' + motcle;
+    $.ajax({
+        type: "POST",
+        url: "{{ path('myapp_utilisateur_rechercher')}}",
+        data: DATA,
+        cache: false,
+        success: function(data){
+           $('#resultats_recherche').html(data);
+           $(".loading").hide();
+        }
+    });    
+    return false;
+});
+</script>
+{% endblock %}

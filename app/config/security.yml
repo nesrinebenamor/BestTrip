@@ -1,0 +1,96 @@
+# you can read more about security in the related section of the documentation
+# http://symfony.com/doc/current/book/security.html
+security:
+    # http://symfony.com/doc/current/book/security.html#encoding-the-user-s-password
+    encoders:
+        Symfony\Component\Security\Core\User\User: plaintext
+        FOS\UserBundle\Model\UserInterface: plaintext
+
+    # http://symfony.com/doc/current/book/security.html#hierarchical-roles
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: ROLE_ADMIN
+
+    # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
+    providers:
+        fos_userbundle:
+            id: fos_user.user_provider.username          
+        in_memory:
+            memory:
+                users:
+                    user:  { password: userpass, roles: [ 'ROLE_USER' ] }
+                    admin: { password: adminpass, roles: [ 'ROLE_ADMIN' ] }
+
+    # the main part of the security, where you can set up firewalls
+    # for specific sections of your app
+    firewalls:
+        main:
+            context: user
+            pattern: /.*
+            logout: 
+                target: /login
+            anonymous: true
+            remember_me:
+                key: "%secret%"
+                lifetime: 31536000
+                path: /
+                domain:
+            pattern: ^/
+            form_login:
+                provider: fos_userbundle
+                csrf_provider: form.csrf_provider
+                default_target_path: /redirect
+            logout: true
+            anonymous: true    
+            oauth:
+                resource_owners:
+                    facebook:      "/login/check-facebook"
+                login_path:        /login
+                failure_path:      /login
+ 
+                oauth_user_provider:
+                    #this is my custom user provider, created from FOSUBUserProvider - will manage the
+                    #automatic user registration on your site, with data from the provider (facebook. google, etc.)
+                    service: my_user_provider
+            logout:       true
+            anonymous:    true
+ 
+        login:
+            pattern:  ^/login$
+            security: false
+        # secures part of the application
+        demo_secured_area:
+            pattern:    ^/
+            # it's important to notice that in this case _demo_security_check and _demo_login
+            # are route names and that they are specified in the AcmeDemoBundle
+            form_login:
+                check_path: /login_check
+                login_path: /login
+            logout:
+                path:   /logout
+                target: /
+            anonymous: ~
+            #http_basic:
+            #    realm: "Secured Demo Area"
+        #secure_area:
+         #   pattern: ^/secure_area
+#            oauth:
+#                failure_path: /secure_area/login
+#                login_path: /secure_area/login
+#                check_path: /secure_area/login
+#                resource_owners:
+#                    facebook: "http://localhost:80/fr-fr.facebook.com/"
+#                oauth_user_provider:
+#                    service: hwi_oauth.user.provider.entity
+
+    # with these settings you can restrict or allow access for different parts
+    # of your application based on roles, ip, host or methods
+    # http://symfony.com/doc/current/book/security.html#security-book-access-control-matching-options
+    access_control:
+        #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
+         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+         - { path: ^/admin/, role: ROLE_ADMIN }
+
+      

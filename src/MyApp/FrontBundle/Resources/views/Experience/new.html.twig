@@ -1,0 +1,65 @@
+{% extends "MyAppFrontBundle::layout.html.twig" %}
+{% block content %}
+    <form method="POST" action="{{path('experience_create')}}" class="form-light mt-20"  {{form_enctype(form)}} {{form_enctype(form1)}} {{form_enctype(form2)}}>
+<input type="hidden" name="MAX_SIZE" value="350000"/>
+        <div class="form-group">
+            <label>Titre</label>
+            {{ form_widget(form.titre, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        
+        <div class="form-group">
+            <label>Description</label>
+            {{form_widget(form.contenu, {'attr': {'class': 'form-control'}})}}
+        </div>
+
+
+        <div class="form-group">
+            <label>Date Début</label>
+            {{form_widget(form.date)}}
+        </div>
+
+        <div class="form-group">
+            <label>Date Fin</label>
+            {{form_widget(form.datefin, {'attr': {'type': 'date'}})}}
+        </div>
+
+        <div class="form-group">
+            <label>Pays</label>
+            {{form_widget(form.pays, {'attr': {'class': 'form-control'}})}}
+        </div>
+        <div class="form-group">
+            <label>Climat</label>
+            {{form_widget(form.climat, {'attr': {'class': 'form-control'}})}}
+        </div>
+        <div class="form-group">
+            <label>Type</label>
+            {{form_widget(form.type, {'attr': {'class': 'form-control'}})}}
+        </div>
+           
+        
+        <div>
+            <label>Image</label>
+            {{form_widget(form1.source)}}
+            
+            {{form_widget(form1.description, {'attr': {'class': 'form-control'}})}}
+        </div>
+        <div>
+            <label>Video</label>
+            {{form_widget(form2.source)}}
+            
+            {{form_widget(form2.extension, {'attr': {'class': 'form-control'}})}}
+        </div>
+
+        <div class="form-group">
+            <label>Dépense</label>
+            {{form_widget(form.depense, {'attr': {'class': 'form-control'}})}}
+
+        </div>
+
+        <button type="submit" class="btn btn-two">Envoyer Expérience</button>
+
+        {{form_rest(form)}}
+        {{form_rest(form1)}}
+        {{form_rest(form2)}}
+    </form>
+{% endblock %}

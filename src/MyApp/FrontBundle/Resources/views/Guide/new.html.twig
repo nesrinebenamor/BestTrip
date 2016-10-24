@@ -1,0 +1,52 @@
+{% extends "MyAppFrontBundle::layout.html.twig" %}
+{% block content %}
+<style type="text/css">
+        #moncadre {
+        width:800px;
+        margin:0 auto;
+        padding:10px;
+        background:#DDD;
+        border:1px solid #DDD;
+        border-radius:5px;
+        -webkit-border-radius:5px;
+        -moz-border-radius:5px;
+        }
+    </style>
+    
+    <h1 align="center">Guide creation</h1>
+    <form method="post" action="{{path('Guide_create')}}">
+        <div id="moncadre">
+    <div style="margin-right: 100 px;">
+    <label>Nom</label>
+ {{ form_widget(form.nom,{'attr':{'class':'form-control'}}) }}
+</div>
+
+<div style="margin-right: 100 px;">
+    <label>Resume</label>
+ {{ form_widget(form.resume,{'attr':{'class':'form-control'}}) }}
+</div>
+
+<div style="margin-right: 100 px;">
+    <label>Prix</label>
+ {{ form_widget(form.prix,{'attr':{'class':'form-control'}}) }}
+</div>
+
+<div style="margin-right: 100 px;">
+    <label>Date</label>
+ {{ form_widget(form.date,{'attr':{'class':'form-control'}}) }}
+</div>
+ 
+
+        </div>
+{{ form_rest(form) }}
+    </form>
+
+        <ul class="record_actions">
+    <li>
+        
+<button class="btn btn-block btn-primary"   href="{{ path('Guide', { 'id': entity.id })}}" onclick="self.location.href=('{{ path('Guide', { 'id': entity.id })}}')" style="width: 300px;">Retour à la liste</button>
+
+    </li>
+</ul>
+        <div  id="googleMap" style="width:1200px;height:380px;"></div>
+{% endblock %}

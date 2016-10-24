@@ -1,0 +1,45 @@
+{% extends "MyAppFrontBundle::layout.html.twig" %}
+{% block content %}
+    <h1>Guide edit</h1>
+
+    <form method="post" action="">
+    <div style="margin-right: 100 px;">
+    <label>Nom</label>
+ {{ form_widget(Form.nom,{'attr':{'class':'form-control'}}) }}
+</div>
+
+<div style="margin-right: 100 px;">
+    <label>Resume</label>
+ {{ form_widget(Form.resume,{'attr':{'class':'form-control'}}) }}
+</div>
+
+<div style="margin-right: 100 px;">
+    <label>Prix</label>
+ {{ form_widget(Form.prix,{'attr':{'class':'form-control'}}) }}
+</div>
+
+<div style="margin-right: 100 px;">
+    <label>Date</label>
+ {{ form_widget(Form.date,{'attr':{'class':'form-control'}}) }}
+</div>
+ <input type="submit" value="Modifier" 
+    style="
+        padding-top: 6px;
+    margin-top: 32px;"
+>
+{{ form_rest(Form) }}
+
+    </form>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('Guide') }}">
+            Back to the list
+        </a>
+    <button class="btn btn-block btn-primary"   href="{{ path('Guide', { 'id': entity.id })}}" onclick="self.location.href=('{{ path('Guide', { 'id': entity.id })}}')" style="width: 300px;">Retour à la liste</button>
+
+    </li>
+    {{ form_rest(Form) }}
+</ul>
+
+{% endblock %}

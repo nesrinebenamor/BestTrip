@@ -1,0 +1,29 @@
+{% extends "MyAppFrontBundle::layoutBack.html.twig" %}
+{% block content %}
+    <head></head>
+    <body><h1> Modifier Newsletter</h1>
+<form method="POST">  
+    
+    
+    <div class="input-group">
+   {{ form_label(form.nom) }}
+   {{ form_widget(form.nom , {'attr':{'class': 'form-control','placeholder':'Nom'}}) }}
+   {{ form_errors(form.nom) }}
+    </div>
+     <div class="input-group">
+   {{ form_label(form.contenu) }}
+   {{ form_widget(form.contenu , {'attr':{'class': 'form-control','placeholder':'Contenu'}}) }}
+   {{ form_errors(form.contenu) }}
+    </div>
+     <div class="input-group">
+   {{ form_label(form.date) }}
+   {{ form_widget(form.date , {'attr':{'class': 'form-control','placeholder':'Date'}}) }}
+   {{ form_errors(form.date) }}
+    </div>
+    <br>
+       <button class="btn btn-block btn-primary" style="width: 300px;">Modifier</button>
+    
+{{ form_rest(form) }}
+
+</form>
+{% endblock %}

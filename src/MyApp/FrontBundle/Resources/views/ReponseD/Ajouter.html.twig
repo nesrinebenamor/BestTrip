@@ -1,0 +1,31 @@
+{% extends "MyAppFrontBundle::layout.html.twig" %}
+{% block content %}
+    <style type="text/css">
+        #moncadre {
+        width:800px;
+        margin:0 auto;
+        padding:10px;
+        background:#DDD;
+        border:1px solid #DDD;
+        border-radius:5px;
+        -webkit-border-radius:5px;
+        -moz-border-radius:5px;
+        }
+    </style>
+    <h2 align="center">Ajouter un Reponse</h2>
+    <form method="POST">
+        <div id="moncadre">
+<div style="margin-right: 100 px;">
+    <label>Contenu</label>
+ {{ form_widget(form.contenu,{'attr':{'class':'form-control'}}) }}
+</div>
+<br>
+<div>
+<input type="submit" value="Ajouter" style="width: 300px;padding-left: 39px;margin-left: 562px;" class="btn btn-block btn-primary" >
+</div>
+</div>
+{{ form_rest(form) }}
+
+ </form>
+
+{% endblock %} 

@@ -1,0 +1,21 @@
+{% extends "MyAppFrontBundle::layout.html.twig" %}
+{% block content %}
+
+    <form method="POST" action="{{path('experience_create')}}" class="form-light mt-20"  {{form_enctype(form1)}}>
+<input type="hidden" name="MAX_SIZE" value="350000"/>
+        
+        <div>
+            <label>Image</label>
+            {{form_widget(form1.source)}}
+            
+            {{form_widget(form1.description, {'attr': {'class': 'form-control'}})}}
+        </div>
+        
+
+        <button type="submit" class="btn btn-two">Envoyer Photo</button>
+
+        
+        {{form_rest(form1)}}
+       
+    </form>
+{% endblock %}{# empty Twig template #}

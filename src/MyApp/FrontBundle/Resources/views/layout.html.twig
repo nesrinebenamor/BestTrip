@@ -1,0 +1,308 @@
+<!--
+Author: WebThemez
+Author URL: http://webthemez.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="free-educational-responsive-web-template-webEdu">
+        <meta name="author" content="webThemez.com">
+        <title>Best Trip</title>
+        <link rel="favicon" href="{{asset('images/favicon.png')}}">
+        <link rel="stylesheet" media="screen" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
+        <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+        <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">
+        <!-- Custom styles-->
+        <link rel="stylesheet" href="{{asset('css/bootstrap-theme.css')}}" media="screen">
+        <link rel="stylesheet" href="{{asset('css/style.css')}}">
+        
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+        <script src="assets/js/html5shiv.js"></script>
+        <script src="assets/js/respond.min.js"></script>
+        <![endif]-->
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/starrating/css/rating.css') }}" />
+    </head>
+
+    <body>
+        
+        <!-- Fixed navbar -->
+        <div class="navbar navbar-inverse">
+            <div class="container">
+                <div class="navbar-header">
+                    <!-- Button for smallest screens -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+                    <a class="navbar-brand" href="{{path('acceul_front')}}">
+                        <img src="{{asset("assets/images/logo.png")}}" style="margin-top: -50px;padding-top:-1px;"/></a>
+                </div>
+<div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav pull-right mainNav">
+                        <li class="c1"><a href="{{path('acceul_front')}}">Accueil</a></li>
+                        <li class="c2 dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Expérience <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{path('experience_create')}}">Partager Expérience</a></li>
+                                <li><a href="{{path('experience_show')}}">Afficher Expériences</a></li>
+                            </ul>
+                        </li>
+                        <li class="c3 dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Guide <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{path('Guide_create')}}">Creer Guide</a></li>
+                                <li><a href="{{path('Guide')}}">Afficher Les Guides</a></li>
+
+                           </ul>
+                        </li>
+                        <li class="c4 dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Recommandation <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{path('recommandation_create')}}">Proposer Recommandation</a></li>
+                                <li><a  href="{{path('affichage')}}">Afficher Recommandations</a></li>
+
+                            </ul>
+                        </li>
+                        
+                        
+                        <li class="c2"><a href="{{ path('MyApp_user_contact')}}">Contact</a></li>
+                        <li class="c5"><a href="{{ path('liste_sujets')}}">Forum</a></li>
+                        
+                        <li class="c6">                            
+                              <ul class="nav navbar-nav pull-right mainNav" >
+                             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                           
+                           <li><a href="#" class="dropdown-toggle" data-toggle="dropdown">{{app.user.username}} <span class="caret"></span></a>
+                               <ul class="dropdown-menu" role="menu">
+                                <li><a href="{{path('myapp_user_profile_show')}}">Consulter Profile</a></li>   
+                                <li><a href="{{path('myapp_user_profile_edit')}}">Editer Profile</a></li>
+                                <li><a href="{{path('my_experiences',{'id':app.user.id})}}">Mes Expériences</a></li>
+                                <li><a href="{{path('fos_user_change_password')}}">Changer Mot de passe</a></li>
+                                <li><a href="{{path('fos_user_security_logout')}}">Déconnexion</a></li>
+                                
+                               </ul>
+                            <li><img src="{{app.request.basepath}}/uploads/photos/{{app.user.image}}" alt="monimg2" width="100" height="100"/></li>   
+                            {% else %}
+                            <ul class="nav navbar-nav pull-left mainNav">
+                             <li><a href="{{path('fos_user_security_login')}}">Connexion</a></li>
+                             <li><a href="{{path('fos_user_registration_register')}}">Inscription</a></li>
+                            </ul> 
+                            {% endif %}
+                             </ul>
+                        </li>
+                    </ul>
+                </div>
+                <!--/.nav-collapse -->
+            </div>
+        </div>
+        <!-- /.navbar -->
+
+        <header  style="margin-top: 56px;" id="head" class="secondary">
+            <div class="container">
+                <h1>{% block nomPage %} 
+                    {% endblock %}</h1>
+                    <p>{% block disPage %} 
+                        {% endblock %}</p>
+                    </div>
+                </header>
+
+                <!-- container -->
+                <section class="container">
+
+                    <div class="row">
+                        
+                          <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAua-Fi-g8TEGnPeIlytnqGY0vaH5SXs20"></script>
+<script>
+function initialize() {
+
+  var mapProp = {
+    center:new google.maps.LatLng(10 ,10),
+    zoom:5,
+    mapTypeId:google.maps.MapTypeId.ROADMAP
+  };
+  var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+}
+google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+                        
+                        
+
+                        <!-- Article main content -->
+                        <article class="col-md-8 maincontent">
+                            {% block content %} 
+                            {% endblock %}
+                        </article>
+                        <!-- /Article -->
+
+                        <!-- Sidebar -->
+                        <aside class="col-md-4 sidebar sidebar-right">
+
+                            <div class="row panel">
+                                <div class="col-xs-12">
+                                    
+                                </div>
+                            </div>
+                            <div class="row panel">
+                                <div class="col-xs-12">
+                                    
+                                </div>
+                            </div>
+
+                        </aside>
+                        <!-- /Sidebar -->
+
+                    </div>
+                </section>
+                <!-- /container -->
+                <footer id="footer">
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="footerbottom">
+                                <div class="col-md-3 col-sm-6">
+                                    <div class="footerwidget">
+                                        <h4>
+                                            Course Categories
+                                        </h4>
+                                        <div class="menu-course">
+                                            <ul class="menu">
+                                                <li><a href="#">
+                                                        List of Technology 
+                                                    </a>
+                                                </li>
+                                                <li><a href="#">
+                                                        List of Business
+                                                    </a>
+                                                </li>
+                                                <li><a href="#">
+                                                        List of Photography
+                                                    </a>
+                                                </li>
+                                                <li><a href="#">
+                                                        List of Language
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-6">
+                                    <div class="footerwidget">
+                                        <h4>
+                                            Products Categories
+                                        </h4>
+                                        <div class="menu-course">
+                                            <ul class="menu">
+                                                <li> <a href="#">
+                                                        Individual Plans  </a>
+                                                </li>
+                                                <li><a href="#">
+                                                        Business Plans
+                                                    </a>
+                                                </li>
+                                                <li><a href="#">
+                                                        Free Trial
+                                                    </a>
+                                                </li>
+                                                <li><a href="#">
+                                                        Academic
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-6">
+                                    <div class="footerwidget">
+                                        <h4>
+                                            Browse by Categories
+                                        </h4>
+                                        <div class="menu-course">
+                                            <ul class="menu">
+                                                <li><a href="#">
+                                                        All Courses
+                                                    </a>
+                                                </li>
+                                                <li> <a href="#">
+                                                        All Instructors
+                                                    </a>
+                                                </li>
+                                                <li><a href="#">
+                                                        All Members
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        All Groups
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-6"> 
+                                    <div class="footerwidget"> 
+                                        <h4>Contact</h4> 
+                                        <p>Lorem reksi this dummy text unde omnis iste natus error sit volupum</p>
+                                        <div class="contact-info"> 
+                                            <i class="fa fa-map-marker"></i> Kerniles 416  - United Kingdom<br>
+                                            <i class="fa fa-phone"></i>+00 123 156 711 <br>
+                                            <i class="fa fa-envelope-o"></i> youremail@email.com
+                                        </div> 
+                                    </div><!-- end widget --> 
+                                </div>
+                            </div>
+                        </div>
+                        <div class="social text-center">
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-dribbble"></i></a>
+                            <a href="#"><i class="fa fa-flickr"></i></a>
+                            <a href="#"><i class="fa fa-github"></i></a>
+                        </div>
+
+                        <div class="clear"></div>
+                        <!--CLEAR FLOATS-->
+                    </div>
+                    <div class="footer2">
+                        <div class="container">
+                            <div class="row">
+
+                                <div class="col-md-6 panel">
+                                    <div class="panel-body">
+                                        <p class="simplenav">
+                                            <a href="index.html">Home</a> | 
+                                            <a href="about.html">About</a> |
+                                            <a href="courses.html">Courses</a> |
+                                            <a href="price.html">Price</a> |
+                                            <a href="videos.html">Videos</a> |
+                                            <a href="contact.html">Contact</a>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 panel">
+                                    <div class="panel-body">
+                                        <p class="text-right">
+                                            Copyright &copy; 2014. Template by <a href="http://webthemez.com/" rel="develop">WebThemez.com</a>
+                                        </p>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- /row of panels -->
+                        </div>
+                    </div>
+                </footer>
+
+
+                <!-- JavaScript libs are placed at the end of the document so the pages load faster -->
+                <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+                <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+                <script src="{{asset('js/custom.js')}}"></script>
+
+            </body>
+        </html>

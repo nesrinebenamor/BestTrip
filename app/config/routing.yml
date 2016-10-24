@@ -1,0 +1,31 @@
+hwi_oauth_redirect:
+    resource: "@HWIOAuthBundle/Resources/config/routing/redirect.xml"
+    prefix:   /secure_area/login
+    
+hwi_oauth_login:
+    resource: "@HWIOAuthBundle/Resources/config/routing/login.xml"
+    prefix: /secure_area/login
+    
+hwi_oauth_connect:
+    resource: "@HWIOAuthBundle/Resources/config/routing/connect.xml"
+    prefix: /secure_area/login 
+    
+facebook_login:
+    pattern: /login/check-facebook
+
+my_app_front:
+    resource: "@MyAppFrontBundle/Resources/config/routing.yml"
+    prefix:   /Front
+
+my_app_user:
+    resource: "@MyAppUserBundle/Resources/config/routing.yml"
+    prefix:   /
+    
+fos_user: 
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"    
+    
+test_facebook:
+    pattern:  /logFacebook/{name}
+    defaults: { _controller: MyAppUserBundle:Facebook:login }
+    
+

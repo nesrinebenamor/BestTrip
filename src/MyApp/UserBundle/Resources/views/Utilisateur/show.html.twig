@@ -1,0 +1,27 @@
+{% extends 'MyApp\UserBundle::layoutBack.html.twig' %}
+
+{% block bodyshow -%}
+    <body>
+    <h2 class="indent-left margin-bot">Les informations de l'Utilisateur</h2>
+             <ul>Nom d'utilisateur : {{entity.username}}
+            <li>Nom: {{entity.nom}}</li>
+            <li>Prenom: {{entity.prenom}}</li>
+            <li>Age: {{entity.age}}</li>
+            <li>Email: {{entity.email}}</li>
+            </ul>
+     
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('utilisateur') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('utilisateur_delete_admin', { 'id': entity.id }) }}">
+            Delete
+        </a>
+    </li>
+</ul>
+</body>
+{% endblock %}

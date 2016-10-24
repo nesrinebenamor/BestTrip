@@ -1,0 +1,46 @@
+{% extends "MyAppFrontBundle::layout.html.twig" %}
+{% block content %}
+    <style type="text/css">
+        .forum{
+            width:100%;
+            padding: .8em 0.5em;
+            margin: .5em 0 1em 0;
+            color: #000;
+            font-size: 15px;
+            outline: none;
+            box-shadow: 1px 1px rgb(219, 219, 214);
+            background: rgb(233, 237, 252);
+            border-radius: 9px;
+            border: none;
+            font-family: 'Lato', sans-serif;
+        }
+    </style>
+    <br>
+    <div class="CSSTableGenerator" > 
+        {%for j in sujet %}
+            <div class="forum"  >
+                {{j.titre}}
+                {{j.text}}
+            </div>
+        {% endfor %}    
+        {%for i in reponses %}
+
+            <div class="forum"  >
+                {{i.contenu}}
+            </div>
+        {% endfor %}
+        <form method="POST">
+            <div id="moncadre">
+                <div style="margin-right: 100 px;">
+                    <label>Contenu</label>
+                    {{ form_widget(form.contenu,{'attr':{'class':'form-control'}}) }}
+                </div>
+                <br>
+                <div>
+                    <input type="submit" value="Ajouter" style="width: 300px;" class="btn btn-block btn-primary" >
+                </div>
+            </div>
+            {{ form_rest(form) }}
+
+    </div>
+{% endblock %}                   

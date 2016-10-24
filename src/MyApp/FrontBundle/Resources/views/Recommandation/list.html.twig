@@ -1,0 +1,44 @@
+{% extends 'MyApp\UserBundle::layout.html.twig' %}
+{% block body %}
+      {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+<h1> Liste des recommandations</h1>
+<br>
+<ul>
+    {% for e in recommandation %}
+         {% if e.estcompagnie is null %}
+    <ul> 
+        <li><b>Adresse du lieu</b> {{ e.adresse}} </li><br>
+        <li><b>Contenu:</b> {{ e.contenu}} </li><br>
+        <li><b>Nombre de recommandation:</b> {{ e.nombre}} </li><br> 
+ <a href="{{path("supprimer_recommandation",{'id':e.id })}}">Supprimer</a> 
+ <a href="{{path("recommandation_show",{'id':e.id })}}">Voir de près</a> <br>
+ 
+ <br><br><br>
+ 
+    </ul> 
+  <ul>
+        <li>
+            <a href="{{ path('recommandation_new') }}">
+               Déposer une nouvelle recommandation
+            </a>
+        </li>
+    </ul>
+    {% else %}
+         <ul> 
+             <li><b>Nom de la compagnie:</b> {{ e.nom}} </li><br>
+             <li><b>Contenu:</b> {{ e.contenu}} </li><br>
+             <li><b>Nombre de recommandation:</b> {{ e.nombre}} </li><br>
+ <a href="{{path("supprimer_recommandation",{'id':e.id })}}">Supprimer</a> 
+ <a href="{{path("recommandation_show",{'id':e.id })}}">Voir de près</a>
+    </ul>  
+        
+       {%endif %} 
+    {% endfor %}
+   </ul>
+    <a href="{{path("ajout_recommandation")}}">Deposer une nouvelle recommandation</a>
+      <a href="{{path("chart_compagnie")}}">Consulter les compagnies</a>
+      <a href="{{path("chart_lieu")}}">Consulter les lieux</a>
+   {% else %}
+        <meta http-equiv="refresh" content="0; url=http://localhost/ProjetBestTrip/web/app_dev.php/login" />
+{% endif %} 
+{% endblock %}        

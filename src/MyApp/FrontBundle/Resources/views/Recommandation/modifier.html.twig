@@ -1,0 +1,33 @@
+{% extends 'MyApp\UserBundle::layout.html.twig' %}
+{% block body -%}
+         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+<h1>Modifier la recommandation </h1>
+<form action="" method="post" {{form_enctype(Form) }}>
+  <table>
+    <tr> 
+    <td>   Nom:</td>
+    <td>{{ form_widget(Form.nom) }}</td>
+    </tr>
+    <tr>
+    <td>   Adresse:</td>
+    <td>{{ form_widget(Form.adresse) }}</td>
+    </tr>   
+    <tr>  
+    <td>   Contenu:</td>
+    <td>{{ form_widget(Form.contenu) }}</td>
+    </tr>
+     <tr>  
+    <td>   EstCompagnie:</td>
+    <td>{{ form_widget(Form.estCompagnie) }}</td>
+    </tr>
+    <tr>  
+    <td> </td>
+    <td><input type="submit" value="Modifier" class="btn btn-action"/></td>
+    </tr>
+   </table>    
+   {{ form_rest(Form) }}
+</form>
+{% else %}
+        <meta http-equiv="refresh" content="0; url=http://localhost/ProjetBestTrip/web/app_dev.php/login" />
+{% endif %}
+{% endblock %}

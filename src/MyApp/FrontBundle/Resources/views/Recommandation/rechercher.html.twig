@@ -1,0 +1,36 @@
+{% extends 'MyAppUserBundle::layout.html.twig' %}
+{% block body %}
+    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+<html>
+    <head><h1>Rechercher une Recommandation </h1></head><br>
+    <body>
+        <form method="POST" action="">
+    Entrer une adresse<input type="text" name="search" class="form-group"/>
+    <input type="submit" value="rechercher" />
+        </form>
+      <form method="POST" action="">
+    Entrer une compagnie<input type="text" name="search1" class="form-group"/>
+    <input type="submit" value="rechercher" />
+        </form>   
+        
+    <br><br>
+
+<ul>
+    {% for e in recommandation %}
+    
+    <ul> 
+        <li><b>Nom :</b> {{ e.nom}} </li>
+        <li><b>Adresse :</b> {{ e.adresse}} </li>
+        <li><b>Contenu:</b> {{ e.contenu}} </li>
+        <li><b>Nombre de recommandation:</b> {{ e.nombre}} </li>
+        <li><a href="{{path("supp_recommandation",{'id':e.id})}}">Supprimer</a></li>
+        <li><a href="{{path("inc_recommandation",{'id':e.id})}}">Recommanderer</a></li>
+    </ul>
+    {% endfor %}
+</ul>
+    </body>
+</html>
+{% else %}
+        <meta http-equiv="refresh" content="0; url=http://localhost/ProjetBestTrip/web/app_dev.php/login" />
+{% endif %}
+{% endblock %}

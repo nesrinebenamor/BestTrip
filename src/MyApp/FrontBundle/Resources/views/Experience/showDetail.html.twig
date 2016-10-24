@@ -1,0 +1,81 @@
+{% extends "MyAppFrontBundle::layout.html.twig" %}
+
+{% block content %}
+    <h1>Experience</h1>
+
+
+    {%for i in experience %}
+        <br><br>
+        <div class="expression  story-expression">
+            <div class="expression-content">
+                <div>
+            <a href="{{path('modifier_experiences',{'id':i.id})}}" style="padding-left: 627px;"><i class="fa fa-edit"></i> Modifier</a>
+            <a href="{{path('supprimer_experiences',{'id':i.id})}}" style="padding-left: 627px;"><i class="fa fa-trash-o"></i> Supprimer</a>
+            </div>
+                <div class="title">{{i.titre}}</div> 
+                <div class="content"> {{i.contenu}}
+                    <div> Date : {{i.date|date('Y-m-d')}}</div>
+                    
+                    <label>Images</label>
+                    {%for j in photo %}                       
+                        <div>                            
+                            <a href="{{path('modifier_experiences',{'id':i.id})}}" style="padding-left: 2px;left: 623px;"><i class="fa fa-edit"></i></a>
+                            <a href="{{path('supprimer_images',{'id':j.id,'id_exp':i.id})}}" style="padding-left: 3px;left: 627px;"><i class="fa fa-trash-o"></i></a>
+                            <br>
+                            <label>Discription</label>
+                            <div>
+                                {{j.description}}
+                            </div>
+                            <img src="{{app.request.basepath}}/upload/experience/images/{{j.source}}"/>
+                        </div>
+                        <br><br>
+                    {% endfor %}  
+                    {%for k in video %}
+                        <video src="{{app.request.basepath}}/upload/experience/video/{{k.source}}" controls></video>
+                        
+                        <div>
+                            <label>Discription</label>
+                            {{k.extension}}
+                        </div>
+                    {% endfor %} 
+                </div>
+                <div class="foot">
+                    <span class="member"></span>
+                </div>
+            </div>           
+        </div> 
+                <div>
+           {%for h in commentaire %}
+                                             
+                        <div class="commentaire">
+                            
+                            {{h.contenu}}
+                        </div>
+                    {% endfor %}  
+                </div>
+                    
+                    <form id="respond-form-Story-5659210" class="respond-form indicate-loading " action="{{path('commenter_experiences',{'id':i.id})}}" method="post" enctype="">
+                    <input type="hidden" id="" name="_csrf" value="20374722a725921e04da0e3dea8dea66" />
+                   
+                    <span class="ep-form-status-msg "></span>
+                    <div class="form-content">
+                        <textarea id="respond-form-Story-5659210-textarea" name="com" placeholder="Votre Commentaire" style="width: 100%;
+	height: 145px;
+	outline: none;
+	resize: none;
+	padding: .5em;
+	color: #000;
+	font-size: 15px;
+	box-shadow: 1px 1px rgb(219, 219, 214);
+	background: rgb(244, 245, 245);
+	border-radius: 3px;
+	border: none;
+	font-family: 'Karma', serif;"></textarea>
+                        <button type="submit" onclick="{{path('commenter_experiences',{'id':i.id})}}">commenter</button>
+                    </div>
+                </form>
+                    
+{% endfor %}
+{% endblock %}
+
+

@@ -1,0 +1,40 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<form action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST" class="fos_user_profile_edit">
+    
+    <div>
+        <ul>
+            <div class="input-group"><strong> Nom: </strong>
+            <span class="input-group" ><i class="fa fa-user" ></i></span>
+            <li>  {{ form_widget(form.nom) }}</li>
+            </div> 
+             <div class="input-group"><strong> Prénom: </strong>
+            <span class="input-group" ><i class="fa fa-user" ></i></span>
+            <li> {{ form_widget(form.prenom) }}</li>
+             </div>
+             <div class="input-group"><strong> Age: </strong>
+            <span class="input-group" ><i class="fa fa-user" ></i></span>
+            <li> {{ form_widget(form.age) }}</li>
+             </div>
+             <div class="input-group"><strong> Nom d'utilisateur: </strong>
+            <span class="input-group" ><i class="fa fa-user" ></i></span>
+            <li>{{ form_widget(form.username) }}</li>
+             </div>
+             <div class="input-group"><strong> Email: </strong>
+            <span class="input-group" ><i class="fa fa-mail-forward" ></i></span>
+            <li> {{ form_widget(form.email) }}</li>
+             </div>
+             <div class="input-group"><strong> Image: </strong>
+            <span class="input-group" ><i class="fa fa-file-image" ></i></span>
+            <li>{{ form_widget(form.image) }}</li>
+             </div>
+             <div class="input-group"><strong> Mot de passe actuel: </strong>
+            <span class="input-group" ><i class="fa fa-lock" ></i></span>
+            <li> {{ form_widget(form.current_password) }}</li>
+             </div>
+        </ul> 
+  
+    <input type="submit" value="{{ 'profile.edit.submit'|trans }}" class="btn btn-action"/>
+    </div>
+     {{form_rest(form)}}
+</form>

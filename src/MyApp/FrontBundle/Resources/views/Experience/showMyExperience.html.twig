@@ -1,0 +1,72 @@
+{% extends "MyAppFrontBundle::layout.html.twig" %}
+
+{% block content %}
+
+    <h1>Experience</h1>
+
+    {%for i in experience %}
+       <br><br>
+        <div id="experience" href="#" class="expression  story-expression  is-link" onclick="self.location.href = ('{{path('detail_experience',{'id':i.id})}}')">
+            <div>
+            <a href="{{path('modifier_experiences',{'id':i.id})}}" style="padding-left: 627px;"><i class="fa fa-edit"></i> Modifier</a>
+            <a href="{{path('supprimer_experiences',{'id':i.id})}}" style="padding-left: 627px;"><i class="fa fa-trash-o"></i> Supprimer</a>
+            </div>
+            <div class="expression-content">
+                <div class="title">{{i.titre}}</div> 
+                <div class="content"> {{i.contenu}}
+                    <div> Date : {{i.date|date('Y-m-d')}}</div>
+                    <div> Date Fin : {{i.datefin|date('Y-m-d')}}</div>
+                    <div> Dépense : {{i.depense}}</div>
+
+                </div>
+                <div class="foot">
+                    <span class="member"></span>
+                </div>
+            </div>
+            <div class="interactions ep-button-bar ">
+                <form id="like-story-5659210-button-form" class="like-button-form like-story-form" action="" method="post" enctype="">
+                    <input id="" name="_csrf" value="20374722a725921e04da0e3dea8dea66" type="hidden">
+                    <span class="ep-form-status-msg "></span>
+                    <div class="form-content">
+                        <input name="modelType" value="Story" type="hidden">
+                        <input name="modelId" value="5659210" type="hidden">
+                        <input class="action" name="action" value="like" type="hidden">
+                        <button class="icon-btn" title="Heart">
+                        </button>
+                    </div>
+                    <div class="form-actions">
+                    </div>
+                </form>
+                <form id="respond-form-Story-5659210" class="respond-form indicate-loading " action="http://www.experienceproject.com/ajax/respond" method="post" enctype="">
+                    <input type="hidden" id="" name="_csrf" value="20374722a725921e04da0e3dea8dea66" />
+                    <h3 class="respond-form-title">Your Response</h3>
+                    <span class="ep-form-status-msg "></span>
+                    <div class="form-content">
+                        <textarea id="respond-form-Story-5659210-textarea" name="text" placeholder="Add a response..."></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <div class="reply-guidelines">
+                            Please respond with 
+                            <a href="" target="_blank">authenticity, support, and respect</a>
+                        </div>
+                        <div class="cancel-or-submit">
+                            <span class="cancel-btn toggle-respond-form">Cancel</span>
+                            <div class="form-input-container -input-container submit-input-container" id="respond-form-Story-5659210">
+                                <label for="respond-form-Story-5659210--input"></label>
+                                <input type="submit" id="respond-form-Story-5659210--input" class="ep-button ep-button-strong -input" name="" value="Post" sfu="" />
+                                <div class="loading-indicator"></div>
+                                <span class="description"></span>
+                            </div>
+                        </div>
+                        <input type="hidden" name="modelId" value="5659210" />
+                        <input type="hidden" name="modelType" value="Story" />
+                        <div class="clear"></div>
+                    </div>
+                </form>
+            </div>
+        </div> 
+    {% endfor %}
+
+{% endblock %}
+
+
